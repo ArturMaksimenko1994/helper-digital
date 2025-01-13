@@ -7,14 +7,13 @@ export default defineConfig({
   resolve: {
     alias: {
       src: "/src",
-
     },
   },
   css: {
     preprocessorOptions: {
       scss: {
         additionalData: `
-        @use "./src/assets/styles/abstracts/index" as *;
+        @use "./src/assets/scss/abstracts/index" as *;
         `,
       },
     },

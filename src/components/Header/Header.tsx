@@ -18,7 +18,6 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-
       <Link to="/">Главная</Link>
       <Link to="/profile">Профиль</Link>
       {!token ? (
@@ -26,7 +25,6 @@ const Header = () => {
       ) : (
         <Link to="/" onClick={deleteToken}>Выйти</Link>
       )}
-      
     </header>
   );
 };

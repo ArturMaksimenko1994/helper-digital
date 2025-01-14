@@ -1,3 +1,4 @@
+import { ProtectedRoute } from "../components/ProtectedRoute/ProtectedRoute";
 
 import PageHome from "./PageHome/PageHome";
 
@@ -9,6 +10,7 @@ import PageForgotPassword from "./(aut)/PageForgotPassword/PageForgotPassword";
 
 import PageNotFound from "./PageNotFound/PageNotFound";
 
+
 const routes = [
   {
     path: "/",
@@ -16,7 +18,11 @@ const routes = [
   },
   {
     path: "/profile",
-    element: <PageProfile />,
+    element: (
+      <ProtectedRoute>
+        <PageProfile />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/login",
@@ -30,7 +36,6 @@ const routes = [
     path: "/forgot-password",
     element: <PageForgotPassword />,
   },
-
   {
     path: "*",
     element: <PageNotFound />,

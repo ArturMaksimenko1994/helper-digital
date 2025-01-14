@@ -1,23 +1,26 @@
-import { Link } from 'react-router'; // Используйте 'react-router-dom' вместо 'react-router'
-import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { clearUser } from '../../redux/slices/userSlice';
+import { clearToken } from '../../redux/slices/authSlice';
+
 import styles from "./Header.module.scss";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [token, setToken] = useState(localStorage.getItem("authToken"));
+  const token = useSelector((state: any) => state.auth.token);
 
-  const deleteToken = () => {
-    localStorage.removeItem("authToken");
-    setToken(null);
+  const handleLogout = () => {
+    dispatch(clearToken());
+    dispatch(clearUser());
+    navigate("/");
   };
-
-  useEffect(() => {
-    const tokenFromStorage = localStorage.getItem("authToken");
-    setToken(tokenFromStorage);
-  }, []);
 
   return (
     <header className={styles.header}>
+
       <Link to="/">Главная</Link>
       <Link to="/profile">Профиль</Link>
       {!token ? (
@@ -25,6 +28,7 @@ const Header = () => {
       ) : (
         <Link to="/" onClick={deleteToken}>Выйти</Link>
       )}
+
     </header>
   );
 };

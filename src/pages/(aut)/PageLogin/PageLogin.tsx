@@ -1,44 +1,38 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { Navigate, useNavigate } from "react-router";
+import { setToken } from "../../../redux/slices/authSlice";
+import { getToken } from "../../../api/api";
+
 import styles from "./../aut.module.scss";
-import { BASE_URL } from "../../../api/api-config";
 
 const LoginPage = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const navigate = useNavigate();
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    setError(null); // Сбрасываем ошибку перед новым запросом
+    setError(null);
 
     try {
-      const response = await fetch(`${BASE_URL}/wp-json/jwt-auth/v1/token`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: identifier,
-          password: password,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.token) {
-        localStorage.setItem("authToken", data.token);
-        navigate("/");
-      } else {
-        setError(data.message || "Ошибка входа. Пожалуйста, проверьте свои данные.");
-      }
-    } catch (error) {
-      setError("Ошибка сети. Попробуйте снова позже.");
+      const token = await getToken(identifier, password);
+      dispatch(setToken(token));
+      navigate("/profile");
+    } catch (err: any) {
+      setError(err.message || "Произошла ошибка");
     }
   };
+
+  const token = localStorage.getItem("authToken");
+
+  if (token) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className={styles.aut}>

@@ -7,6 +7,8 @@ const PageHome: React.FC = () => {
 
         <section className={styles.block}>
           PageHome
+          <br />
+          будет выводится что надо продлить
         </section>
 
       </div>

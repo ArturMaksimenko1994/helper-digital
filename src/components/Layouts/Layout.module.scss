@@ -1,0 +1,19 @@
+.app {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+
+  &__content {
+    flex: 1;
+  }
+}
+
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+}

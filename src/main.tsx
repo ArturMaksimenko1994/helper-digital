@@ -7,6 +7,7 @@ import App from './components/App/App'
 
 import { store } from './redux/store';
 
+import './assets/fonts/fonts.css';
 import './assets/scss/app.scss';
 
 createRoot(document.getElementById('root')!).render(
@@ -18,3 +19,6 @@ createRoot(document.getElementById('root')!).render(
     </Provider>
   </StrictMode>
 )
+
+
+

@@ -1,4 +1,4 @@
-import React from "react";
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
 
 interface IProps {
@@ -6,7 +6,7 @@ interface IProps {
 }
 
 export const ProtectedRoute = ({ children }: IProps) => {
-  const token = localStorage.getItem("authToken");
+  const token = useSelector((state: any) => state.auth.token);
 
   if (!token) {
     return <Navigate to="/login" replace />;

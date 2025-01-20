@@ -1,11 +1,7 @@
 .app {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
   height: 100vh;
   font-family: 'Inter', sans-serif;
-}
-
-.main {
-  flex: 1;
-  margin: 24px 0 32px 0;
 }

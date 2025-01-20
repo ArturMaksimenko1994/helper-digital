@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store"; // Убедитесь, что путь корректен
+import { RootState } from "../../redux/store";
 import { Navigate } from "react-router";
 
 import styles from "./PageProfile.module.scss";

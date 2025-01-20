@@ -1,20 +1,33 @@
 import { ProtectedRoute } from "../components/ProtectedRoute/ProtectedRoute";
 
 import PageHome from "./PageHome/PageHome";
-
 import PageProfile from "./PageProfile/PageProfile";
 
-import PageLogin from "./(aut)/PageLogin/PageLogin";
-import PageResetPassword from "./(aut)/PageResetPassword/PageResetPassword";
-import PageForgotPassword from "./(aut)/PageForgotPassword/PageForgotPassword";
-
 import PageNotFound from "./PageNotFound/PageNotFound";
-
+import PageDomains from "./PageDomains/PageDomains";
+import PageServices from "./PageServices/PageServices";
 
 const routes = [
   {
     path: "/",
-    element: <PageHome />,
+    element: (
+      <ProtectedRoute>
+        < PageHome />
+      </ProtectedRoute>)
+  },
+  {
+    path: "/domains",
+    element: (
+      <ProtectedRoute>
+        < PageDomains />
+      </ProtectedRoute>)
+  },
+  {
+    path: "/services",
+    element: (
+      <ProtectedRoute>
+        < PageServices />
+      </ProtectedRoute>)
   },
   {
     path: "/profile",
@@ -23,18 +36,6 @@ const routes = [
         <PageProfile />
       </ProtectedRoute>
     ),
-  },
-  {
-    path: "/login",
-    element: <PageLogin />,
-  },
-  {
-    path: "/reset-password",
-    element: <PageResetPassword />,
-  },
-  {
-    path: "/forgot-password",
-    element: <PageForgotPassword />,
   },
   {
     path: "*",

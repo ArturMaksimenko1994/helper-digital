@@ -1,0 +1,88 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border-radius: 8px;
+  line-height: 150%;
+  text-decoration: none;
+  transition: background-color .3s, color .3s;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.primary {
+    color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+    background-color: $brand-600;
+
+    &:hover {
+      background-color: $brand-700;
+    }
+  }
+
+  &.primary-outline {
+    color: $brand-600;
+
+    &:hover {
+      color: $brand-700;
+    }
+  }
+
+  &.secondary {
+    color: $gray-700;
+    border: 1px solid $gray-300;
+
+    &:hover {
+      box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+      background-color: $gray-50;
+      color: $gray-800;
+    }
+  }
+
+  &.secondary-outline {
+    color: $gray-600;
+
+    &:hover {
+      color: $gray-700;
+    }
+  }
+
+  &.xs {
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  &.sm {
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  &.md {
+    gap: 8px;
+    padding: 10px 18px;
+    font-size: 16px;
+  }
+
+  &.lg {
+    gap: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  &.xl {
+    gap: 12px;
+    padding: 16px 28px;
+    font-size: 18px;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+}
